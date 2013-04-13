@@ -1,0 +1,29 @@
+PATH
+  remote: .
+  specs:
+    spinney (0.1.0)
+      erubis
+      net-ssh
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    erubis (2.7.0)
+    json (1.7.7)
+    metaclass (0.0.1)
+    mocha (0.13.3)
+      metaclass (~> 0.0.1)
+    net-ssh (2.6.7)
+    rake (10.0.4)
+    rdoc (4.0.1)
+      json (~> 1.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler
+  mocha
+  rake
+  rdoc
+  spinney!

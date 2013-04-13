@@ -32,7 +32,7 @@ module Spiiney::Bootstraps
       gem_install
     end
 
-    def yum_omnibus_install
+    def yum_gem_install
       run_command("sudo yum clean all")
       run_command("sudo yum -y install rsync")
     end
@@ -41,23 +41,23 @@ module Spiiney::Bootstraps
       return @distro if @distro
       @distro = case issue
       when %r{Debian GNU/Linux 6}
-        {:type => (x86? ? "debianoid_omnibus" : "debianoid_gem")}
+        {:type => "debianoid_gem"}
       when %r{Debian}
         {:type => "debianoid_gem"}
       when %r{Ubuntu}i
-        {:type => "debianoid_gem")}
+        {:type => "debianoid_gem"}
       when %r{CentOS}
-        {:type => "yum_omnibus"}
+        {:type => "yum_gem_install"}
       when %r{Amazon Linux}
-        {:type => "yum_omnibus"}
+        {:type => "yum_gem_install"}
       when %r{Red Hat Enterprise}
-        {:type => "yum_omnibus"}
+        {:type => "yum_gem_install"}
       when %r{Fedora}
-        {:type => "yum_omnibus"}
+        {:type => "yum_gem_install"}
       when %r{Scientific Linux}
-        {:type => "yum_omnibus"}
+        {:type => "yum_gem_install"}
       else
-        raise "Distro not recognized from looking at /etc/issue. Please fork https://github.com/matschaffer/knife-solo and add support for your distro."
+        raise "Distro not recognized from looking at /etc/issue."
       end
       @distro
     end
